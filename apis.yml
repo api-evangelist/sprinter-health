@@ -1,8 +1,14 @@
 aid: sprinter-health
 name: Sprinter Health
-description: Sprinter Health is a company surfaced as a portfolio company of a16z, accel, general-catalyst,
-  gv and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting
-  the enrichment pipeline.
+description: Sprinter Health is an in-home preventive and diagnostic healthcare company
+  that pairs trained community health workers ("Sprinters") who visit patients at home
+  with a virtual team of physicians, nurses, and care navigators. Its hybrid Sprinter
+  Care+ model delivers vitals, blood draws, ECGs, cancer and diabetic screenings, wellness
+  visits, medication reconciliation, care-gap closure, health risk assessments, and
+  social-needs screening, and partners with health plans such as Humana, Molina Healthcare,
+  and Anthem. Backed by a16z, Accel, General Catalyst, and GV. No public developer or
+  API surface was found during enrichment; this profile captures the company's identity,
+  security posture, and legal/trust properties.
 url: https://raw.githubusercontent.com/api-evangelist/sprinter-health/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,11 +19,30 @@ x-backed-by:
 - gv
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Health
+- Healthcare
+- In-Home Care
+- Preventive Care
+- Diagnostics
+- Telehealth
+- Care Navigation
+image: https://cdn.prod.website-files.com/63586a00b2d65414b52d615b/63c03d887e2e8d99c8938b3e_open2.jpg
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -27,3 +52,18 @@ maintainers:
 common:
 - type: Website
   url: https://www.sprinterhealth.com/
+- type: About
+  url: https://www.sprinterhealth.com/about
+- type: TrustCenter
+  url: https://trust.sprinterhealth.com/
+- type: PrivacyPolicy
+  url: https://www.sprinterhealth.com/privacy-policy
+- type: TermsOfService
+  url: https://www.sprinterhealth.com/terms-of-use
+- type: DomainSecurity
+  url: security/sprinter-health-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
