@@ -32,7 +32,7 @@ accessModel:
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-15'
 tags:
 - Company
 - Health
@@ -62,8 +62,38 @@ common:
   url: https://www.sprinterhealth.com/terms-of-use
 - type: DomainSecurity
   url: security/sprinter-health-domain-security.yml
+- type: LLMsTxt
+  url: llms/sprinter-health-llms.txt
+- type: Support
+  url: https://www.sprinterhealth.com/contact
+- type: Blog
+  url: https://www.sprinterhealth.com/news
+- type: Login
+  url: https://app.sprinterhealth.com/
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-15'
   status: minimal
-  artifacts_added: 1
+  artifacts_added: 3
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Sprinter Health ships software only as an end-user product — a login-gated patient
+    and clinician SPA at app.sprinterhealth.com whose server answers HTTP 200 with the
+    identical React shell for /openapi.yaml, /graphql, /api-docs and every /.well-known/*
+    path — while its health-plan partners page sells encounter summaries, CPT II coded
+    claims and supplemental data with no API, FHIR, HL7 or SFTP surface named anywhere,
+    and api./docs./developer.sprinterhealth.com carry no DNS record at all.
+  evidence:
+    - url: https://www.sprinterhealth.com/developers
+      status: 404
+    - url: https://www.sprinterhealth.com/openapi.json
+      status: 404
+    - url: https://app.sprinterhealth.com/openapi.yaml
+      status: 200
+    - url: https://app.sprinterhealth.com/.well-known/agent-card.json
+      status: 404
+    - url: https://api.github.com/orgs/sprinterhealth
+      status: 404
+  checked: '2026-08-15'
