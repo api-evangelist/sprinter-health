@@ -1,0 +1,31 @@
+generated: '2026-08-15'
+method: probed
+probe: true
+url: https://trust.sprinterhealth.com/
+platform: Vanta Trust Center
+certifications: []
+note: >-
+  A trust center is served at trust.sprinterhealth.com — HTTP 200, a Vanta-hosted
+  page whose served HTML carries <title>Sprinter Health Trust Center</title> and the
+  Vanta asset/manifest references. Its CONTENT (control framework list, certifications,
+  documents) is rendered client-side and its backing GraphQL API is request-signed:
+  POST https://trust.sprinterhealth.com/graphql returns HTTP 400
+  {"errors":[{"message":"Missing `signature` or `signedAt`"}]}. No certification could
+  therefore be read from the served bytes, so certifications[] is an honest empty list
+  rather than a guess. NO `Compliance` pointer is emitted: the existence of a trust
+  center is verified, a published certification is not.
+evidence:
+  - source: https://trust.sprinterhealth.com/
+    http_status: 200
+    kind: trust-center-page
+    keywords: [trust, security, compliance]
+    detail: 'Vanta-hosted; <title>Sprinter Health Trust Center</title>'
+  - source: https://trust.sprinterhealth.com/graphql
+    http_status: 400
+    kind: trust-center-api
+    detail: 'signature-gated: {"message":"Missing `signature` or `signedAt`"}'
+x-evidence:
+  fetched: '2026-08-15'
+  url: https://trust.sprinterhealth.com/
+  http_status: 200
+  content_type: text/html

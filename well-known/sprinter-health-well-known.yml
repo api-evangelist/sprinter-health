@@ -1,0 +1,70 @@
+generated: '2026-08-15'
+method: probed
+source: live HTTPS probes of every Sprinter Health host reachable from apis.yml
+note: >-
+  Every /.well-known/ path probed on every resolvable Sprinter Health host either
+  404s or is answered by a single-page-app catch-all that returns the React shell
+  (HTTP 200, Content-Type text/html, <title>Sprinter Health</title>) for ANY path.
+  No /.well-known/ document is actually served, so NO WellKnown or SecurityTxt
+  pointer is emitted in apis.yml — this file records a verified absence, not a
+  presence. app.sprinterhealth.com is the patient/clinician application shell, not
+  a discovery surface: it answers 200 for /openapi.yaml, /graphql, /api-docs and
+  every /.well-known/* path with the identical HTML document.
+hosts:
+  - host: www.sprinterhealth.com
+    root_status: 200
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: app.sprinterhealth.com
+    root_status: 200
+    spa_catch_all: true
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 200
+        real_document: false
+        content_type: text/html
+        note: SPA shell (<!doctype html> … Sprinter Health), not an OIDC discovery document
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        real_document: false
+        content_type: text/html
+        note: SPA shell, not an RFC 8414 authorization-server metadata document
+      - path: /.well-known/api-catalog
+        status: 200
+        real_document: false
+        content_type: text/html
+        note: SPA shell, not an RFC 9727 api-catalog document
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: api.sprinterhealth.com
+    root_status: 000
+    note: does not resolve (no DNS record)
+  - host: docs.sprinterhealth.com
+    root_status: 000
+    note: does not resolve (no DNS record)
+  - host: developer.sprinterhealth.com
+    root_status: 000
+    note: does not resolve (no DNS record)
+  - host: developers.sprinterhealth.com
+    root_status: 000
+    note: does not resolve (no DNS record)
+documents_served: 0
